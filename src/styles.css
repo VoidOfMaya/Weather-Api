@@ -1,4 +1,5 @@
 /* Minimal CSS Reset */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -6,9 +7,11 @@
 }
 
 html, body {
-  height: 100vh;
-  width: 100vw;
-  font-family: sans-serif;
+    height: 100vh;
+    width: 100vw;
+    font-family: "Onest" ,sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 img, picture, video, canvas, svg {
@@ -21,5 +24,11 @@ input, button, textarea, select {
 }
 /* Weather App*/
 body{
-    background-color: red;
+}
+
+.main-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 4fr;
+    height: 100%;
 }
