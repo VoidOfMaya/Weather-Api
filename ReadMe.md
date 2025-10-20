@@ -5,8 +5,7 @@ This is a project from **The Odin Project** curriculum, focused on applying key 
 - Handling user input using HTML5 form validation and custom logic  
 - Sending requests to third-party APIs — primarily the [Visual Crossing Weather API](https://www.visualcrossing.com/weather-api), and optionally the [Giphy API](https://developers.giphy.com/)  
 - Using **Promises** and **async/await** to handle asynchronous operations  
-- Writing **modular**, **loosely coupled** code following the **Single Responsibility Principle**  
-- Practicing **API key security** through environment variables and/or proxying (depending on deployment)
+- Writing **modular**, **loosely coupled** code following the **Single Responsibility Principle** 
 
 ---
 
