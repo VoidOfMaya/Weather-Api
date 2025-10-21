@@ -8,7 +8,7 @@ console.log(`running program...!`);
 
 
 let isDisplay = false;
-const {title, display} = buildMain();
+const { display} = buildMain();
 const form = createForm();
 
 
@@ -44,10 +44,6 @@ form.addEventListener('submit', async (e)=>{
     await fetchMemes(link, img);
 
     //page UI switiching
-
-
-
- 
     if (!display.contains(displayWin)) {
         display.appendChild(displayWin);
     }
