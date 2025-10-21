@@ -23,7 +23,7 @@ const generateLink = function (location){
     return `${baseUrl}${editLocation}/${today}?key=${vCKey}`;
 }
 
-const getWeatherData = async function (link, element){
+const getWeatherData = async function (link, /*element*/){
    const response =await fetch(link)
    try{      
       const weatherData = await response.json()
@@ -32,7 +32,7 @@ const getWeatherData = async function (link, element){
             console.log(desiredData)
          //success(desiredData, element);
       }else{
-         console.warn("no valid image in response: ", searchData);
+         console.warn("no valid image in response: ", desireData);
          //faliur(element);
       }         
    }catch{
@@ -52,6 +52,6 @@ const getWeatherData = async function (link, element){
  }
 
  export {
-    todayDate,
+    getWeatherData,
     generateLink,
  }
