@@ -25,24 +25,38 @@ form.addEventListener('submit', async (e)=>{
     e.preventDefault();
 
     const location = form.elements.location.value.trim();
-    if(!location)return;
+    const isValid = /^[A-Za-z\s\-]+$/.test(location);
+  if (!isValid) {
+    alert('Please enter a valid city or country name (letters only).');
+    return;
+  }
+    
 
 
     const data = await getData(location);
     console.log(`condtions: ${data.conditions}`);
     isDisplay = true;
-    const { displayWin, img} = await dispayData(data);
+    const { displayWin, img, reset} = await dispayData(data);
     displayWin.style.display = "block";
 
     //giphy.api
-    const link = await memeSearch(data.conditions);
-    const meme = await fetchMemes(link, img);
+    const link = await memeSearch(`${data.conditions} weather`);
+    await fetchMemes(link, img);
+
+    //page UI switiching
+
+
 
  
     if (!display.contains(displayWin)) {
         display.appendChild(displayWin);
     }
-    switchPage(form, displayWin, isDisplay);
+    switchPage(form, displayWin, isDisplay);   
+    reset.addEventListener('click', ()=>{
+        isDisplay = false;
+        switchPage(form, displayWin, isDisplay); 
+
+    })
 })
 
 

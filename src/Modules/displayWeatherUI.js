@@ -13,21 +13,38 @@
 
 const dispayData = function(data,){
     const displayWin = document.createElement('div');
+    const backToForm = document.createElement('div');
     const { element, img} = createCard(data);
+
+    backToForm.style.gridArea ="reset"
+    backToForm.innerText = "change location";
+    backToForm.style.fontSize = "24px";
+    backToForm.style.padding = "15px 50px 15px 50px";
+    backToForm.style.justifySelf = "center";
+    backToForm.style.alignSelf = "center";
+    backToForm.style.backgroundColor = "#87CEFA";
+    backToForm.style.borderRadius = "25px";
+    backToForm.addEventListener('mouseover',()=>{
+        backToForm.style.backgroundColor= "#fff"
+    })
+    backToForm.addEventListener('mouseout',()=>{
+        backToForm.style.backgroundColor= "#87CEFA"
+    })
 
     displayWin.style.display ="grid";
     displayWin.style.height = '100%';
     displayWin.style.gridTemplateRows = "1fr 5fr 1fr";
     displayWin.style.gridTemplateColumns = "1fr 3fr 1fr";
-    displayWin.style.gridTemplateAreas = `". . ."
+    displayWin.style.gridTemplateAreas = `". reset ."
                                           ". card ."
                                           ". . ."`;
 
     displayWin.appendChild(element);
+    displayWin.appendChild(backToForm)
 
     
 
-    return {displayWin, img};
+    return {displayWin, img, reset: backToForm};
 
 }
 const createCard= function (data){
