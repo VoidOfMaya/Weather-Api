@@ -30,7 +30,7 @@ const getWeatherData = async function (link, /*element*/){
         const weatherData = await response.json()
         const desiredData = await weatheDataHandler(weatherData);
         if (weatherData && weatherData.currentConditions){
-            //console.log(desiredData);
+            console.log(weatherData);
             return desiredData;
         }else{
             console.warn("no valid data  in response: ", desiredData);
@@ -54,9 +54,10 @@ const getWeatherData = async function (link, /*element*/){
  }*/
  const weatheDataHandler =async function(data){
     
-    const { address, currentConditions} = data;   
+    const { description, resolvedAddress, currentConditions} = data;   
     const newData = {
-        address:    address,
+        address:    resolvedAddress,
+        descreption:  description,
         temp:       currentConditions.temp,
         feelslike:  currentConditions.feelslike,
         conditions: currentConditions.conditions,

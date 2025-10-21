@@ -3,6 +3,7 @@ import { getWeatherData , generateLink} from './Modules/vCrossingApi';
 import { buildMain } from './Modules/mainContainer';
 import { createForm } from './Modules/formUI';
 import { dispayData } from './Modules/displayWeatherUI';
+import { fetchMemes, memeSearch } from './Modules/giphyApi';
 console.log(`running program...!`);
 
 
@@ -28,15 +29,20 @@ form.addEventListener('submit', async (e)=>{
 
 
     const data = await getData(location);
+    console.log(`condtions: ${data.conditions}`);
     isDisplay = true;
-    const showData = await dispayData(data);
-    showData.style.display = "block";
+    const { displayWin, img} = await dispayData(data);
+    displayWin.style.display = "block";
+
+    //giphy.api
+    const link = await memeSearch(data.conditions);
+    const meme = await fetchMemes(link, img);
 
  
-    if (!display.contains(showData)) {
-        display.appendChild(showData);
+    if (!display.contains(displayWin)) {
+        display.appendChild(displayWin);
     }
-    switchPage(form, showData, isDisplay);
+    switchPage(form, displayWin, isDisplay);
 })
 
 
