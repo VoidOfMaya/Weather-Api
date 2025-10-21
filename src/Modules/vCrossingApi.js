@@ -24,22 +24,24 @@ const generateLink = function (location){
 }
 
 const getWeatherData = async function (link, /*element*/){
-   const response =await fetch(link)
-   try{      
-      const weatherData = await response.json()
-      const desiredData = weatherData;
-      if (desiredData){
+   
+   try{   
+        const response =await fetch(link)   
+        const weatherData = await response.json()
+        const desiredData = await weatheDataHandler(weatherData);
+        if (desiredData){
             console.log(desiredData)
-         //success(desiredData, element);
-      }else{
-         console.warn("no valid image in response: ", desireData);
-         //faliur(element);
-      }         
-   }catch{
+            //success(desiredData, element);
+        }else{
+            console.warn("no valid data  in response: ", desiredData);
+            //faliur(element);
+        }         
+    }catch{
         ((error)=>{
-          console.error("Network or parsing error:", error);
+            console.error("Network or parsing error:", error);
          //faliur(element);
-      }) }
+        }) 
+    }
 }
 
 
@@ -49,6 +51,22 @@ const getWeatherData = async function (link, /*element*/){
  const faliur = function(element){
    element.removeAttribute("src");
    element.alt = "Oops... Something went wrong!!!"
+ }
+ const weatheDataHandler =async function(data){
+    
+    const dataAdress =  data.address;
+    const dataConditions = data.currentConditions;    
+    const newData = {
+        address:    dataAdress,
+        temp:       dataConditions.temp,
+        feelslike:  dataConditions.feelslike,
+        conditions: dataConditions.conditions,
+        icon:       dataConditions.icon,
+        humidity:   dataConditions.humidity
+    };
+
+    return newData;
+
  }
 
  export {
