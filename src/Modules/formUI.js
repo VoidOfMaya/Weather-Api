@@ -19,6 +19,7 @@ const createForm =function(){
     label.style.paddingRight = "20px";
     label.setAttribute('for','location');
 
+    input.placeholder = "Enter location !"
     input.name = "location";
     input.id = "location";
     input.required = true;
