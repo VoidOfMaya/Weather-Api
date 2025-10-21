@@ -130,7 +130,7 @@ const toggleTemp = function(data, tempEl, feelsEl){
     })
     toggle.addEventListener('mouseout',()=>{
         toggle.style.backgroundColor = "#fff"; 
-        toggle.style.color = "##333";       
+        toggle.style.color = "#333";       
     })
 
     toggle.addEventListener('click',()=>{
