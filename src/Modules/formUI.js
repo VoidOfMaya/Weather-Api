@@ -5,25 +5,32 @@
                 <input type="date" id="published" name="published" required/> 
                 <button class="footer" id="submit-info" type="submit"> create book!</button> 
 */
-const locationForm = document.createElement('form');
-const label = document.createElement('label');
-const input = document.createElement('input');
-const submit= document.createElement('button');
+const createForm =function(){
+    const locationForm = document.createElement('form');
+    const label = document.createElement('label');
+    const input = document.createElement('input');
+    const submit= document.createElement('button');
 
-locationForm.style.justifySelf = 'center';
-locationForm.style.paddingTop = '10%';
+    locationForm.style.justifySelf = 'center';
+    locationForm.style.paddingTop = '10%';
 
-label.innerText = "Enter a location : ";
-label.for = "location";
+    label.innerText = "Enter a location";
+    label.style.fontSize ="20px";
+    label.style.paddingRight = "20px";
+    label.setAttribute('for','location');
 
-input.name = "location";
-submit.innerText = "Search";
+    input.name = "location";
+    input.id = "location";
+    input.required = true;
+
+    submit.innerText = "Search";
 
 
-locationForm.appendChild(label);
-locationForm.appendChild(input);
-locationForm.appendChild(submit);
+    locationForm.appendChild(label);
+    locationForm.appendChild(input);
+    locationForm.appendChild(submit);
+    return locationForm;
+}
 
 
-
-export {locationForm,};
+export {createForm,};

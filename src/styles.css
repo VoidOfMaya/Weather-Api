@@ -23,7 +23,14 @@ img, picture, video, canvas, svg {
 input, button, textarea, select {
   font: inherit;
 }
-/* Weather App*/
+/* ===>Weather App<===*/
+/*color scheme:
+Background: Light Sky Blue #87CEFA
+Accent: Deep Sky Blue #00BFFF
+Text: Charcoal #333
+Cards / Panels: White #fff
+Icons / Highlights: Goldenrod #DAA520
+*/
 body{
 }
 
@@ -51,4 +58,5 @@ button{
 
 button:hover{
  background-color: #a6f4f7;
+ color:#fff;
 }
