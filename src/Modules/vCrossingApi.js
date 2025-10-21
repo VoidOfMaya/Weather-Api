@@ -29,9 +29,9 @@ const getWeatherData = async function (link, /*element*/){
         const response =await fetch(link)   
         const weatherData = await response.json()
         const desiredData = await weatheDataHandler(weatherData);
-        if (desiredData){
-            console.log(desiredData)
-            //success(desiredData, element);
+        if (weatherData && weatherData.currentConditions){
+            //console.log(desiredData);
+            return desiredData;
         }else{
             console.warn("no valid data  in response: ", desiredData);
             //faliur(element);
@@ -44,25 +44,24 @@ const getWeatherData = async function (link, /*element*/){
     }
 }
 
+/*
+ const success =function( data){
+   console.log(weatheDataHandler(data));
 
- const success =function(link, element){
-   element.src = link;
  }
- const faliur = function(element){
-   element.removeAttribute("src");
-   element.alt = "Oops... Something went wrong!!!"
- }
+ const faliur = function(){
+
+ }*/
  const weatheDataHandler =async function(data){
     
-    const dataAdress =  data.address;
-    const dataConditions = data.currentConditions;    
+    const { address, currentConditions} = data;   
     const newData = {
-        address:    dataAdress,
-        temp:       dataConditions.temp,
-        feelslike:  dataConditions.feelslike,
-        conditions: dataConditions.conditions,
-        icon:       dataConditions.icon,
-        humidity:   dataConditions.humidity
+        address:    address,
+        temp:       currentConditions.temp,
+        feelslike:  currentConditions.feelslike,
+        conditions: currentConditions.conditions,
+        icon:       currentConditions.icon,
+        humidity:   currentConditions.humidity
     };
 
     return newData;

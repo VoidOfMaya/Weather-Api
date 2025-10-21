@@ -12,6 +12,7 @@ html, body {
     font-family: "Onest" ,sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+    color: #333;
 }
 
 img, picture, video, canvas, svg {
@@ -31,4 +32,23 @@ body{
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 4fr;
     height: 100%;
+    /*background-color: #87CEFA;*/
+    background:linear-gradient(360deg,rgba(235, 245, 255, 1) 2%, rgba(135, 206, 250, 1) 59%, rgba(125, 175, 255, 1) 100%);
+}
+
+input{
+  border: none;
+  padding: 10px;
+  width: 400px;
+  border-radius: 10px 0px 0px 10px;
+}
+button{
+  border: none;
+  padding: 10px;
+  border-radius: 0px 10px 10px 0px;
+  background-color: #7ec8f7;
+}
+
+button:hover{
+ background-color: #a6f4f7;
 }

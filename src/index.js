@@ -1,10 +1,22 @@
 import './styles.css';
 import { getWeatherData , generateLink} from './Modules/vCrossingApi';
+import { buildMain } from './Modules/mainContainer';
+import { locationForm } from './Modules/formUI';
 console.log(`running program...!`);
 
-const main = document.querySelector('.main-container');
+let data;
+let isDisplay = false;
 
-const link =generateLink('london');
+const getData = async(location)=>{
+    const link = generateLink(location);
+    data = await getWeatherData(link);
+    console.log(data);
+};
 
-getWeatherData(link);
+getData('budapest');
+const {title, display} = buildMain();
 
+
+if (!isDisplay){
+    display.appendChild(locationForm)
+}
