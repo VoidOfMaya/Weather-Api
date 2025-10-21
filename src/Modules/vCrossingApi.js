@@ -20,7 +20,7 @@ const generateLink = function (location){
         return null;
     }
     const editLocation = location.trim().replace(/\s+/g,'-');
-    return `${baseUrl}${editLocation}/${today}?key=${vCKey}`;
+    return `${baseUrl}${editLocation}/${today}?unitGroup=metric&key=${vCKey}`;
 }
 
 const getWeatherData = async function (link, /*element*/){

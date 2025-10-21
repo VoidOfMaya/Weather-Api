@@ -11,6 +11,7 @@
 
 */
 
+
 const dispayData = function(data,){
     const displayWin = document.createElement('div');
     const backToForm = document.createElement('div');
@@ -57,7 +58,7 @@ const createCard= function (data){
     const feelsLike = document.createElement('div');
     const humidity  = document.createElement('div');
 
-    const CFToggle = toggleTemp();
+    const CFToggle = toggleTemp(data, temp, feelsLike);
 
 
     address.style.gridArea = "address";
@@ -67,11 +68,13 @@ const createCard= function (data){
     feelsLike.style.gridArea = "feels"; //should be effected by CFToggle
     humidity.style.gridArea = "humidity";
 
+    CFToggle.style.gridArea = "toggle-temp";
+
     address.innerText = `${data.address}`;
     condition.innerText = `${data.conditions}\n${data.descreption}`;
-    temp.innerText = `${data.temp}`;
-    feelsLike.innerText = `${data.feelslike}`;
-    humidity.innerText = `${data.humidity}%`;
+    temp.innerText = `Tempreture: ${data.temp}°C`;
+    feelsLike.innerText = ` Feels like: ${data.feelslike}°C`;
+    humidity.innerText = `Humidity: ${data.humidity}%`;
 
     address.style.fontSize = "24px";
     condition.style.textAlign = 'center';
@@ -108,12 +111,52 @@ const createCard= function (data){
     return {element:card, img: icon};
 }
 
-const toggleTemp = function(temp, unit){
+const toggleTemp = function(data, tempEl, feelsEl){
 
     const toggle = document.createElement('div');
-    toggle.style.backgroundColor = "green"
+
+    toggle.innerText = "change tempreture unite";
+    toggle.style.padding = "10px 25px 10px 25px";
+    toggle.style.borderRadius = "25px";
+
+    let temp = data.temp
+    let feel = data.feelslike
+    let unit = "C"
+    toggle.style.backgroundColor = "#fff";
+
+    toggle.addEventListener('mouseover',()=>{
+        toggle.style.backgroundColor = "#f7d070ff";
+        toggle.style.color = "#fff";
+    })
+    toggle.addEventListener('mouseout',()=>{
+        toggle.style.backgroundColor = "#fff"; 
+        toggle.style.color = "##333";       
+    })
+
+    toggle.addEventListener('click',()=>{
+        if(unit === "C"){
+   
+            temp = celsiusToFahrenheit(temp);
+            feel = celsiusToFahrenheit(feel);
+            unit = "F";
+        }else{
+
+            temp = fahrenheitToCelsius(temp);
+            feel = fahrenheitToCelsius(feel);
+            unit = "C"; 
+        }
+        tempEl.innerText = `Tempreture: ${temp.toFixed(1)}°${unit}`;
+        feelsEl.innerText = `Feels like: ${temp.toFixed(1)}°${unit}`;
+    })
     return toggle;
 
+}
+function celsiusToFahrenheit(celsius) {
+    return (celsius * 9/5) + 32;
+}
+
+function fahrenheitToCelsius(fahrenheit) {
+    return (fahrenheit - 32) * 5/9;
 }
 
 export{
